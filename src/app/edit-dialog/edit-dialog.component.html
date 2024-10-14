@@ -1,0 +1,114 @@
+<h2 mat-dialog-title>Add Employees</h2>
+<mat-dialog-content>
+  <h1>Employee Signup</h1>
+  <form [formGroup]="signupForm" (ngSubmit)="onSignup()">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Employee ID:</mat-label>
+        <input matInput formControlName="employeeId" placeholder="Enter Employee ID" required>
+        <mat-error *ngIf="signupForm.get('employeeId')?.invalid && signupForm.get('employeeId')?.touched">
+          <span *ngIf="signupForm.get('employeeId')?.hasError('required')">Employee ID is required.</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Name:</mat-label>
+        <input matInput formControlName="name" placeholder="Enter Employee Name" required>
+        <mat-error *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched">
+          <span *ngIf="signupForm.get('name')?.hasError('required')">Name is required.</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Email:</mat-label>
+          <input matInput formControlName="email" placeholder="Enter Your Email" required email>
+          <mat-error *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+            <span *ngIf="signupForm.get('email')?.hasError('required')">Email is required.</span>
+            <span *ngIf="signupForm.get('email')?.hasError('email')">Please enter a valid email address.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Address:</mat-label>
+        <input matInput formControlName="address" placeholder="Enter Employee Address" required>
+        <mat-error *ngIf="signupForm.get('address')?.invalid && signupForm.get('address')?.touched">
+          <span *ngIf="signupForm.get('address')?.hasError('required')">address is required.</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Job Title:</mat-label>
+        <input matInput formControlName="job" placeholder="Enter Employee Job Title" required>
+        <mat-error *ngIf="signupForm.get('job')?.invalid && signupForm.get('job')?.touched">
+          <span *ngIf="signupForm.get('job')?.hasError('required')">title is required.</span>
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Role:</mat-label>
+        <input matInput formControlName="role" placeholder="Enter Employee Role" required>
+        <mat-error *ngIf="signupForm.get('role')?.invalid && signupForm.get('role')?.touched">
+          <span *ngIf="signupForm.get('role')?.hasError('required')">Role is required.</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Salary:</mat-label>
+        <input matInput formControlName="salary" placeholder="Enter Employee Salary" required>
+        <mat-error *ngIf="signupForm.get('salary')?.invalid && signupForm.get('salary')?.touched">
+          <span *ngIf="signupForm.get('salary')?.hasError('required')">Salary is required.</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Phone:</mat-label>
+        <input matInput formControlName="phone" placeholder="Enter Employee Phone" required>
+        <mat-error *ngIf="signupForm.get('phone')?.invalid && signupForm.get('phone')?.touched">
+          <span *ngIf="signupForm.get('phone')?.hasError('required')">Phone is required.</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Joining Date:</mat-label>
+        <input matInput type="date" formControlName="joiningDate" placeholder="Enter Joining Date" required>
+        <mat-error *ngIf="signupForm.get('joiningDate')?.invalid && signupForm.get('joiningDate')?.touched">
+          <span *ngIf="signupForm.get('joiningDate')?.hasError('required')">Joining Date is required.</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+     <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Password:</mat-label>
+        <input matInput formControlName="password" placeholder="Enter Your Password" required [type]="showPassword ? 'text' : 'password'">
+        <mat-icon matSuffix (click)="togglePasswordVisibility()">
+          {{ showPassword ? 'visibility' : 'visibility_off' }}
+        </mat-icon>
+        <mat-error *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+          <span *ngIf="signupForm.get('password')?.hasError('required')">Password is required.</span>
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <button mat-raised-button color="primary" [disabled]="signupForm.invalid && formSubmitted">Add Employee</button>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button color="primary" (click)="closeDialog()" style="color: red;">Close</button>
+</mat-dialog-actions>
+

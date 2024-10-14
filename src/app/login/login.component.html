@@ -1,0 +1,36 @@
+<div class="signup-container">
+  <div class="image-container">
+    <img src="https://www.smartfunstudios.com/assets/img/smartfun-studios.png" alt="">
+  </div>
+  <div class="form-container">
+    <h1>Login</h1>
+    <form [formGroup]="signupForm" (ngSubmit)="onLogin()">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Email:</mat-label>
+          <input matInput formControlName="email" placeholder="Enter Your Email" required email>
+          <mat-error *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+            <span *ngIf="signupForm.get('email')?.hasError('required')">Email is required.</span>
+            <span *ngIf="signupForm.get('email')?.hasError('email')">Please enter a valid email address.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Password:</mat-label>
+          <input matInput formControlName="password" placeholder="Enter Your Password" required [type]="showPassword ? 'text' : 'password'">
+          <mat-icon matSuffix (click)="togglePasswordVisibility()">
+            {{ showPassword ? 'visibility' : 'visibility_off' }}
+          </mat-icon>
+          <mat-error *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+            <span *ngIf="signupForm.get('password')?.hasError('required')">Password is required.</span>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button color="primary" [disabled]="signupForm.invalid && formSubmitted">Login</button>
+      <a mat-button routerLink="/forgot">Forgot password?</a>
+    </form>
+  </div>
+</div>
